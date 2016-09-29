@@ -1,9 +1,8 @@
-<div class="container">
+<div class="container" ng-init="vm.init()">
     <div class="form-group">
-        <form name="returnForm" ng-submit="vm.submit()" novalidate>
+        <form name="returnForm" ng-submit="vm.submit()">
             <label for="category">
-                <select id="category" ng-model="form.category">
-                    <option value="" disabled selected>Category</option>
+                <select id="category" ng-model="vm.form.category">
                     <option ng-repeat="category in vm.categories" value="{{category}}">{{category}}</option>
                 </select>
             </label>

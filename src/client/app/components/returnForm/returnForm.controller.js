@@ -6,7 +6,7 @@
         .directive('returnForm', returnFormDirective);
 
     function returnFormDirective () {
-        return {
+        var directive = {
             restrict: 'E',
             templateUrl: 'app/components/returnForm/returnForm.html',
             scope: {},
@@ -15,34 +15,42 @@
             bindToController: true
         };
 
-        function ReturnFormController() {
-            var vm = this;
-            vm.form = {
-              startDate: '2016-06-18',
-                endDate: '2018-05-13'
-            };
+        ReturnFormController.$inject = ['ReturnService'];
 
-            vm.form.startDateRaw = new Date(vm.form.startDate);
-            vm.form.endDateRaw = new Date(vm.form.endDate);
+        function ReturnFormController(ReturnService) {
+            var vm = this;
 
             vm.submit = submit;
+            vm.init = init;
 
-            vm.categories = [
-                'Men\'s Footwear',
-                'Fitness',
-                'Mobiles and Tablets',
-                'Mobile Accessories',
-                'Women\'s Watches',
-                'Tools',
-                'Men\'s Watches',
-                'Women\'s Clothing',
-                'Kitchen Appliances',
-                'Women\'s Footwear',
-                'Eyewear',
-                'Computer Accessories',
-                'Men\'s Clothing',
-                'Men\'s Grooming'
-            ];
+            function init () {
+                vm.form = {
+                    startDate: '2016-06-18',
+                    endDate: '2018-05-13',
+                    category: 'All categories'
+                };
+
+                vm.form.startDateRaw = new Date(vm.form.startDate);
+                vm.form.endDateRaw = new Date(vm.form.endDate);
+
+                vm.categories = [
+                    'All categories',
+                    'Men\'s Footwear',
+                    'Fitness',
+                    'Mobiles and Tablets',
+                    'Mobile Accessories',
+                    'Women\'s Watches',
+                    'Tools',
+                    'Men\'s Watches',
+                    'Women\'s Clothing',
+                    'Kitchen Appliances',
+                    'Women\'s Footwear',
+                    'Eyewear',
+                    'Computer Accessories',
+                    'Men\'s Clothing',
+                    'Men\'s Grooming'
+                ];
+            }
 
             function submit() {
                 //parse dates
@@ -50,6 +58,7 @@
                 vm.form.endDate = parseDate(vm.form.endDateRaw);
 
                 //call service to retrieve data
+                ReturnService.loadReturnCount(vm.form.startDate, vm.form.endDate, vm.form.category)
 
                 console.log('vm.form', vm.form);
             }
@@ -58,12 +67,10 @@
                 var mm = dateObj.getMonth();
                 var dd = dateObj.getDate();
 
-                var date = [dateObj.getFullYear(), mm , dd].join('');
-
-                //!mm[1] && '0', mm, !dd[1] && '0', dd.join('');
-
-                return date;
+                return [dateObj.getFullYear(), mm , dd].join('');
             }
         }
+
+        return directive;
     }
 })();

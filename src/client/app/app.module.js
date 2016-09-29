@@ -6,7 +6,6 @@
         'app.features',
         'app.components',
         'app.layout',
-        'app.services',
         'app.directives',
         'ngMaterial'
     ]);

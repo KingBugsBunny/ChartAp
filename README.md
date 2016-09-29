@@ -10,5 +10,3 @@ should run npm install and then bower install.
 
 run app 
 `gulp serve-dev`
-
-
