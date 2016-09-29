@@ -1,0 +1,14 @@
+<div ng-controller="ShellController as vm">
+    <section id="content" class="content portrait-mobile">
+        <!--Render routes( NG_VIEW ) -->
+        <div ui-view class="shuffle-animation"></div>
+        <div ngplus-overlay
+             ngplus-overlay-delay-in="50"
+             ngplus-overlay-delay-out="700"
+             ngplus-overlay-animation="dissolve-animation">
+            <img src="images/busy.gif"/>
+
+            <div class="page-spinner-message overlay-message">{{vm.busyMessage}}</div>
+        </div>
+    </section>
+</div>
