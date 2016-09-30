@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('app.directives.d3LineGraph', [
+    angular.module('app.components.container', [
         'app.services'
     ]);
 

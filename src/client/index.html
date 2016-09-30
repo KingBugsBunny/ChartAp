@@ -12,14 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <base href="/">
 
-    <!-- google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRZ02AErOWo9quP_MvnOfdoLXlQUkCmds"></script>
-
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/bower_components/nvd3/build/nv.d3.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -60,6 +58,8 @@
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="/bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -71,12 +71,11 @@
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/components/app.components.module.js"></script>
     <script src="/src/client/app/components/chart/chart.module.js"></script>
+    <script src="/src/client/app/components/container/container.module.js"></script>
     <script src="/src/client/app/components/footer/footer.module.js"></script>
     <script src="/src/client/app/components/header/header.module.js"></script>
     <script src="/src/client/app/components/returnForm/returnForm.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
-    <script src="/src/client/app/directives/d3LineGraph/d3LineGraph.module.js"></script>
-    <script src="/src/client/app/directives/directives.module.js"></script>
     <script src="/src/client/app/features/app.features.module.js"></script>
     <script src="/src/client/app/features/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
@@ -86,6 +85,7 @@
     <script src="/src/client/app/blocks/logger/logger.js"></script>
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
     <script src="/src/client/app/components/chart/chart.controller.js"></script>
+    <script src="/src/client/app/components/container/container.controller.js"></script>
     <script src="/src/client/app/components/footer/footer.controller.js"></script>
     <script src="/src/client/app/components/header/header.controller.js"></script>
     <script src="/src/client/app/components/returnForm/returnForm.controller.js"></script>
@@ -93,13 +93,13 @@
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/core/dataservice.js"></script>
-    <script src="/src/client/app/directives/d3LineGraph/d3LineGraph.directive.js"></script>
     <script src="/src/client/app/features/dashboard/dashboard.controller.js"></script>
     <script src="/src/client/app/features/dashboard/dashboard.route.js"></script>
     <script src="/src/client/app/layout/shell.controller.js"></script>
-    <script src="/src/client/app/services/d3.service.js"></script>
     <script src="/src/client/app/services/rest.service.js"></script>
+    <script src="/src/client/app/services/ReturnReasonServiceMock.js"></script>
     <script src="/src/client/app/services/ReturnService.js"></script>
+    <script src="/src/client/app/services/ReturnServiceMock.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->
