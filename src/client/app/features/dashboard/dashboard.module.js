@@ -3,6 +3,6 @@
 
     angular.module('app.features.dashboard', [
         'app.core',
-        'app.components.footer'
+        'app.components'
       ]);
 })();

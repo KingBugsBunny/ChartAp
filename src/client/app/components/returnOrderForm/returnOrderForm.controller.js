@@ -2,23 +2,27 @@
     'use strict';
 
     angular
-        .module('app.components.returnForm')
-        .directive('returnForm', returnFormDirective);
+        .module('app.components.returnOrderForm')
+        .directive('returnOrderForm', returnOrderFormDirective);
 
-    function returnFormDirective () {
+    function returnOrderFormDirective () {
         return {
             restrict: 'E',
-            templateUrl: 'app/components/returnForm/returnForm.html',
-            scope: {},
-            controller: ReturnFormController,
+            templateUrl: 'app/components/returnOrderForm/returnOrderForm.html',
+            scope: {
+                startDate: '=',
+                endDate: '=',
+                category: '='
+            },
+            controller: ReturnOrderFormController,
             controllerAs: 'vm',
             bindToController: true
         };
     }
 
-    ReturnFormController.$inject = [];
+    ReturnOrderFormController.$inject = [];
 
-    function ReturnFormController() {
+    function ReturnOrderFormController() {
         var vm = this;
 
         vm.submit = submit;
@@ -62,6 +66,9 @@
             //parse dates
             vm.form.startDate = parseDate(vm.form.startDateRaw);
             vm.form.endDate = parseDate(vm.form.endDateRaw);
+
+            //category is set by ngModel
+            //limit is set by ngModel
         }
 
         function parseDate(dateObj) {

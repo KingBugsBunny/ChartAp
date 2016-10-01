@@ -1,24 +1,25 @@
 <section class="navbar navbar-center">
     <header></header>
 </section>
-
 <container>
-    <div class="row">
-        <section class="col-md-offset-1 col-md-2">
-            <return-form></return-form>
-        </section>
-    </div>
-    <div class="row">
-        <section id="orderCountChart" class="col-md-offset-1 col-md-7">
-            <chart data="vm.returnOrderData" chartBasics=""></chart>
-        </section>
-        <section id="reasonChart" class="col-md-3">
-            <chart data="vm.returnReasonData" chartbasics=""></chart>
-        </section>
+    <div class="container">
+        <div class="row">
+            <section class="col-md-6">
+                <return-order-form startDate="vm.form.startDate" endDate="vm.form.endDate" category="vm.form.category"
+                    ></return-order-form>
+            </section>
+            <section id="orderCountChart" class="col-md-12">
+                <line-chart></line-chart>
+            </section>
+        </div>
+        <div class="row">
+            <section class=" col-md-6">
+                <return-reason-form startDate="vm.form.startDate" endDate="vm.form.endDate" category="vm.form.category"
+                                    limit="vm.form.limit"></return-reason-form>
+            </section>
+            <section id="reasonChart" class="col-md-12">
+                <bar-chart></bar-chart>
+            </section>
+        </div>
     </div>
 </container>
-
-<section class="navbar navbar-center navbar-fixed-bottom">
-    <footer></footer>
-</section>
-
