@@ -27,27 +27,29 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
-            //call service to get return Order data
-            vm.chartData.push(setData(chartService.getReturnData()));
 
-            //call service to get return Order Options
-            vm.chartOptions.chart = setChartOptions(chartService.setReturnOrderOptions());
+            //call service to get return Order data & options
+            var data = chartService.getReturnData();
 
-            //call service to get return reason data
+            vm.chartData.push(setData(data));
 
-            //call service to get return reason Options
-
+            vm.chartOptions.chart = setChartOptions(chartService.setReturnOrderOptions(), data.values[0], data.values[data.values.length]);
         }
 
         function setData(data) {
             return {
                 values: data.values,
                 key: data.key,
-                color: data.color
+                color: data.color,
+                strokeWidth: 2
             }
         }
 
-        function setChartOptions(chartBasics) {
+        function setChartOptions(chartBasics, minDate, maxDate) {
+
+            var minDateObj = new Date(minDate);
+            var maxDateObj = new Date(maxDate);
+
             var chart = {
                 type: chartBasics.type,
                 height: 450,
@@ -57,14 +59,19 @@
                     bottom: 40,
                     left: 55
                 },
-                x: function(d){
-                    return d.value;
+                x: function (d, i) {
+                    return i;
                 },
                 y: function (d) {
-                    return d3.time.scale().d.count;
+                    return d.count;
                 },
                 xAxis: {
-                    axisLabel: chartBasics.xAxis
+                    axisLabel: chartBasics.xAxis,
+                    tickFormat: function (d) {
+                        return d3.time.format('%x')(new Date(d.value));
+                    },
+                    //rotateLabels: 30,
+                    showMaxMin: true
                 },
                 yAxis: {
                     axisLabel: chartBasics.yAxis,
@@ -77,27 +84,11 @@
                 caption: {
                     enable: false,
                     html: ''
-                }
+                },
+                useInteractiveGuideline: false,
+                interactive: false,
+                duration: 100
             };
-
-            //if line chart set extra values it needs
-            if (chartBasics.type === 'lineChart') {
-
-                chart.useInteractiveGuideline = false;
-
-            }
-
-            //if bar chart set extra values it needs
-            if (chartBasics.type === 'multiBarChart') {
-
-                //TODO: find out what this means
-                chart.duration = 100;
-
-                chart.stacked = true;
-
-            }
-
-            console.table(chart);
 
             return chart;
         }

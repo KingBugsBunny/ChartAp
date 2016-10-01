@@ -63,15 +63,8 @@
                     axisLabel: chartBasics.yAxis,
                     axisLabelDistance: 10
                 },
-                title: {
-                    text: chartBasics.title,
-                    enable: true
-                },
-                caption: {
-                    enable: false,
-                    html: ''
-                },
-                duration : 100,
+                title: chartBasics.title,
+                duration : 500,
                 stacked: true
             };
         }
