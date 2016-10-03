@@ -17,6 +17,7 @@ function ChartService(ReturnServiceMock, ReturnReasonServiceMock) {
     //get chart data
     function getReturnData() {
         var returnOrderData = {};
+
         returnOrderData.values = ReturnServiceMock;
         returnOrderData.key = 'return Order';
         returnOrderData.color = 'red';

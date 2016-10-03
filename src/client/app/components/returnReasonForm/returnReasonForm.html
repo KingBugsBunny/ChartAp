@@ -10,7 +10,6 @@
             <md-datepicker ng-model="vm.reasonFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
             <label for="limit">limit</label>
             <select id="limit" ng-model="vm.reasonFormLimit" required>
-                <option value="10" selected>10</option>
                 <option ng-repeat="limit in vm.limits" value="{{limit}}">{{limit}}</option>
             </select>
             <input class="btn btn-primary" type="submit" value="Submit">
