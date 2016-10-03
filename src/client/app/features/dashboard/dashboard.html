@@ -1,11 +1,23 @@
 <section class="navbar navbar-center">
     <header></header>
 </section>
-<container>
+<container order-form-start-date="vm.OrderFormStartDate"
+           order-form-end-date="vm.orderFormEndDate"
+           order-form-category="vm.orderFormCategory"
+    order-form-submit="vm.orderFormSubmit"
+    reason-form-start-date="vm.reasonFormStartDate"
+    reason-form-end-date="vm.reasonFormEndDate"
+    reason-form-category="vm.reasonFormCategory"
+    reason-form-limit="vm.reasonFormLimit"
+    reason-form-submit="vm.reasonFormSubmit"
+>
     <div class="container" >
         <div class="row">
             <section class="col-md-6">
-                <return-order-form startDate="vm.form.startDate" endDate="vm.form.endDate" category="vm.form.category"
+                <return-order-form order-form-start-date="vm.OrderFormStartDate"
+                                   order-form-end-date="vm.orderFormEndDate"
+                                   order-form-category="vm.orderFormCategory"
+                                   order-form-submit="vm.orderFormSubmit"
                     ></return-order-form>
             </section>
         </div>
@@ -16,8 +28,11 @@
         </div>
         <div class="row">
             <section class=" col-md-6">
-                <return-reason-form startDate="vm.form.startDate" endDate="vm.form.endDate" category="vm.form.category"
-                                    limit="vm.form.limit"></return-reason-form>
+                <return-reason-form reason-form-start-date="vm.reasonFormStartDate"
+                                    reason-form-end-date="vm.reasonFormEndDate"
+                                    reason-form-category="vm.reasonFormCategory"
+                                    reason-form-limit="vm.reasonFormLimit"
+                                    reason-form-submit="vm.reasonFormSubmit"></return-reason-form>
             </section>
         </div>
         <div class="row">

@@ -2,12 +2,12 @@
     <div class="form-group">
         <form name="returnForm" ng-submit="vm.submit()">
             <label for="category">category</label>
-                <select id="category" ng-model="vm.form.category">
+                <select id="category" ng-model="vm.orderFormCategory">
                     <option ng-repeat="category in vm.categories" value="{{category}}">{{category}}</option>
                 </select>
-            <md-datepicker id="startDate" ng-model="vm.form.startDateRaw" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
-            <md-datepicker id="endDate" ng-model="vm.form.endDateRaw" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
-            <button class="submit" type="submit">Submit</button>
+            <md-datepicker id="startDate" ng-model="vm.orderFormStartDate" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
+            <md-datepicker id="endDate" ng-model="vm.orderFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
+            <input class="btn btn-primary" type="submit" value="Submit">
         </form>
     </div>
 </div>

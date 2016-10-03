@@ -43,7 +43,7 @@
         function setChartOptions(chartBasics) {
             return {
                 type: chartBasics.type,
-                height: 450,
+                height: 350,
                 margin: {
                     top: 20,
                     right: 20,

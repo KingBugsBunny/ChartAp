@@ -10,10 +10,11 @@
             restrict: 'E',
             templateUrl: 'app/components/returnReasonForm/returnReasonForm.html',
             scope: {
-                startDate: '=',
-                endDate: '=',
-                category: '=',
-                limit: '='
+                reasonFormStartDate: '=',
+                reasonFormEndDate: '=',
+                reasonFormCategory: '=',
+                reasonFormLimit: '=',
+                reasonFormSubmit: '='
             },
             controller: ReturnReasonFormController,
             controllerAs: 'vm',
@@ -21,25 +22,21 @@
         };
     }
 
-    ReturnReasonFormController.$inject = [];
-
     function ReturnReasonFormController() {
         var vm = this;
 
-        vm.submit = submit;
         vm.init = init;
+        vm.submit = submit;
 
         function init() {
-            vm.form = {
-                startDate: '2016-06-18',
-                endDate: '2018-05-13',
-                category: 'All categories',
-                limit: 50
-            };
 
-            vm.form.startDateRaw = new Date(vm.form.startDate);
-            vm.form.endDateRaw = new Date(vm.form.endDate);
+            vm.reasonFormStartDate = new Date('2016-06-18');
+            vm.reasonFormEndDate =  new Date('2018-05-13');
+            vm.reasonFormCategory = 'All categories';
+            vm.reasonFormLimit = 50;
+            vm.reasonFormSubmit = false;
 
+            //populate selects
             vm.categories = [
                 'All categories',
                 'Men\'s Footwear',
@@ -66,25 +63,8 @@
             ];
         }
 
-        //TODO: add watches
-        //watch for startDate
-
-        //watch for endDate
-
         function submit() {
-            //parse dates
-            vm.form.startDate = parseDate(vm.form.startDateRaw);
-            vm.form.endDate = parseDate(vm.form.endDateRaw);
-
-            //category is set by ngModel
-            //limit is set by ngModel
-        }
-
-        function parseDate(dateObj) {
-            var mm = dateObj.getMonth();
-            var dd = dateObj.getDate();
-
-            return [dateObj.getFullYear(), mm, dd].join('');
+            vm.reasonFormSubmit = true;
         }
     }
 })();

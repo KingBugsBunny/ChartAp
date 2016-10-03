@@ -1,18 +1,19 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.components.returnOrderForm')
         .directive('returnOrderForm', returnOrderFormDirective);
 
-    function returnOrderFormDirective () {
+    function returnOrderFormDirective() {
         return {
             restrict: 'E',
             templateUrl: 'app/components/returnOrderForm/returnOrderForm.html',
             scope: {
-                startDate: '=',
-                endDate: '=',
-                category: '='
+                orderFormStartDate: '=',
+                orderFormEndDate: '=',
+                orderFormCategory: '=',
+                orderFormSubmit: '='
             },
             controller: ReturnOrderFormController,
             controllerAs: 'vm',
@@ -20,23 +21,19 @@
         };
     }
 
-    ReturnOrderFormController.$inject = [];
-
     function ReturnOrderFormController() {
         var vm = this;
 
-        vm.submit = submit;
         vm.init = init;
+        vm.submit = submit;
 
-        function init () {
-            vm.form = {
-                startDate: '2016-06-18',
-                endDate: '2018-05-13',
-                category: 'All categories'
-            };
 
-            vm.form.startDateRaw = new Date(vm.form.startDate);
-            vm.form.endDateRaw = new Date(vm.form.endDate);
+        function init() {
+
+            vm.orderFormStartDate = new Date('2016-06-18');
+            vm.orderFormEndDate = new Date('2018-05-13');
+            vm.orderFormCategory = 'All categories';
+            vm.orderFormSubmit = false;
 
             vm.categories = [
                 'All categories',
@@ -57,25 +54,8 @@
             ];
         }
 
-        //TODO: add watches
-        //watch for startDate
-
-        //watch for endDate
-
         function submit() {
-            //parse dates
-            vm.form.startDate = parseDate(vm.form.startDateRaw);
-            vm.form.endDate = parseDate(vm.form.endDateRaw);
-
-            //category is set by ngModel
-            //limit is set by ngModel
-        }
-
-        function parseDate(dateObj) {
-            var mm = dateObj.getMonth();
-            var dd = dateObj.getDate();
-
-            return [dateObj.getFullYear(), mm , dd].join('');
+            vm.orderFormSubmit = true;
         }
     }
 })();
