@@ -31,7 +31,7 @@
         function init() {
 
             vm.orderFormStartDate = new Date('2016-06-18');
-            vm.orderFormEndDate = new Date('2018-05-13');
+            vm.orderFormEndDate = new Date('2016-07-25');
             vm.orderFormCategory = 'All categories';
             vm.orderFormSubmit = false;
 

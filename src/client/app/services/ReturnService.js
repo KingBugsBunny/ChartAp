@@ -8,7 +8,7 @@
 
     function ReturnService(restService) {
 
-        var resource = '/returns/count/order_date?';
+        var resource = 'http://13.84.149.217:8000/returns/count/order_date?';
 
         return {
             loadReturnCount: loadReturnCount,
@@ -32,7 +32,7 @@
 
             return restService.GET(
                 resource +
-                 'start_date=' + startDate +'&end_date' +
+                 'start_date=' + startDate +'&end_date=' +
                  endDate + '&category=' + category +
                   '&limit=' + limit);
         }

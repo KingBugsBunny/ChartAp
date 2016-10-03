@@ -9,16 +9,18 @@
         return {
             restrict: 'E',
             templateUrl: 'app/components/lineChart/lineChart.html',
-            scope: {},
+            scope: {
+                lineData: '='
+            },
             controller: LineChartController,
             controllerAs: 'vm',
             bindToController: true
         };
     }
 
-    LineChartController.$inject = ['ChartService'];
+    LineChartController.$inject = ['$scope', 'ChartService'];
 
-    function LineChartController(ChartService) {
+    function LineChartController($scope, ChartService) {
         var vm = this;
 
         vm.init = init;
@@ -27,30 +29,27 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
-
-            //call service to get return Order data & options
-            var data = ChartService.getReturnData();
-
-            vm.chartData.push(setData(data));
-
-            vm.chartOptions.chart = setChartOptions(ChartService.setReturnOrderOptions(), data.values[0], data.values[data.values.length]);
+            vm.chartOptions.chart = setChartOptions(ChartService.setReturnOrderOptions());
         }
+
+        $scope.$watch('vm.lineData', function(){
+            if(vm.lineData){
+                vm.chartData = [];
+                vm.chartData.push(setData(vm.lineData.data));
+            }
+        });
 
         function setData(data) {
             return {
-                values: data.values,
-                key: data.key,
-                color: data.color,
+                values: data,
+                key: 'return Order',
+                color: 'red',
                 strokeWidth: 2
             }
         }
 
-        function setChartOptions(chartBasics, minDate, maxDate) {
-
-            var minDateObj = new Date(minDate);
-            var maxDateObj = new Date(maxDate);
-
-            var chart = {
+        function setChartOptions(chartBasics) {
+            return {
                 type: chartBasics.type,
                 height: 450,
                 margin: {
@@ -87,10 +86,9 @@
                 },
                 useInteractiveGuideline: false,
                 interactive: false,
-                duration: 100
+                duration: 100,
+                deepWatchData: true
             };
-
-            return chart;
         }
     }
 })();

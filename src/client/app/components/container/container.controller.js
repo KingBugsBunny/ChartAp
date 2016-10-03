@@ -18,7 +18,9 @@
                 reasonFormEndDate: '=',
                 reasonFormCategory: '=',
                 reasonFormLimit: '=',
-                reasonFormSubmit: '='
+                reasonFormSubmit: '=',
+                lineData: '=',
+                barData: '='
             },
             controller: ContainerController,
             controllerAs: 'vm',
@@ -27,9 +29,9 @@
         };
     }
 
-    ContainerController.$inject = ['$scope', 'ReturnService'];
+    ContainerController.$inject = ['$scope','logger', 'ReturnService'];
 
-    function ContainerController($scope, ReturnService) {
+    function ContainerController($scope, logger, ReturnService) {
         var vm = this;
 
         vm.init = init;
@@ -39,25 +41,34 @@
         function init() {
             vm.orderChartData = {};
             vm.reasonChartData = {};
-            vm.lineData = {};
 
+            vm.initialOrderData = {
+                startDate: '2016-06-18',
+                endDate: '2016-07-25',
+                category: 'All categories'
+            };
+
+            vm.initialReasonData = {
+                startDate: '2016-06-18',
+                endDate: '2016-07-25',
+                category: 'All categories',
+                limit: 50
+            };
+
+            //make initial service call
+            getOrderChartData(vm.initialOrderData);
+            getReasonChartData(vm.initialReasonData);
         } //end init
-
 
         function getOrderChartData(chartData) {
             if (chartData.startDate && chartData.endDate) {
 
                 ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category)
                     .then(function (payload) {
-                        vm.lineData.values = payload;
-                        vm.lineData.key = 'return Order';
-                        vm.lineData.strokeWidth = 2;
-                        vm.lineData.color = 'red';
+                        vm.lineData = payload.data;
 
-                        console.log('orderData',payload);
-
-                    }, function (err) {
-                        logger.error('error occured: ' + err);
+                    }, function () {
+                        logger.error('error occurred retrieving return order data');
                     });
             }
         }
@@ -65,26 +76,25 @@
         function getReasonChartData(chartData) {
             if (chartData.startDate && chartData.endDate) {
 
-                ReturnService.loadReasonsCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
-                    .then(function(data) {
-                        vm.reasonPayload = data;
-                        console.log('reasonData',data);
+                ReturnService.loadReasonCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
+                    .then(function(payload) {
+                        vm.barData = payload.data;
 
                     }, function(err) {
-                        logger.error('error occured: ' + err);
+                        logger.error('error occurred retrieving return reason data');
                     });
             }
         }
 
         //orderChart watchers
         $scope.$watch('vm.orderFormStartDate', function () {
-            vm.orderChartData.startDate = vm.orderFormStartDate;
+            vm.orderChartData.startDate = parseDate(vm.orderFormStartDate);
         });
         $scope.$watch('vm.orderFormEndDate', function () {
-            vm.orderChartData.endDate = vm.orderFormEndDate;
+            vm.orderChartData.endDate = parseDate(vm.orderFormEndDate);
         });
         $scope.$watch('vm.orderFormCategory', function () {
-            vm.orderChartData.category = vm.orderFormCategory;
+                vm.orderChartData.category = vm.orderFormCategory;
         });
         $scope.$watch('vm.orderFormSubmit', function () {
             if (vm.orderFormSubmit === true) {
@@ -93,17 +103,15 @@
             }
         });
 
-
         //reasonChart watchers
-        //orderChart watchers
         $scope.$watch('vm.reasonFormStartDate', function () {
-            vm.reasonChartData.startDate = vm.reasonFormStartDate;
+            vm.reasonChartData.startDate = parseDate(vm.reasonFormStartDate);
         });
         $scope.$watch('vm.reasonFormEndDate', function () {
-            vm.reasonChartData.endDate = vm.reasonFormEndDate;
+            vm.reasonChartData.endDate = parseDate(vm.reasonFormEndDate);
         });
         $scope.$watch('vm.reasonFormCategory', function () {
-            vm.reasonChartData.category = vm.reasonFormCategory;
+                vm.reasonChartData.category = vm.reasonFormCategory;
         });
         $scope.$watch('vm.reasonFormLimit', function () {
             vm.reasonChartData.limit = vm.reasonFormLimit;
@@ -116,6 +124,14 @@
             }
         });
 
+        function parseDate(dateObj) {
+            if(dateObj) {
+                var mm = dateObj.getMonth();
+                var dd = dateObj.getDate();
+
+                return [dateObj.getFullYear(), mm, dd].join('-');
+            }
+        }
 
     }
 })();

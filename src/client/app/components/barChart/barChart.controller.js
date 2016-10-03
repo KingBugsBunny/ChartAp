@@ -9,16 +9,18 @@
         return {
             restrict: 'E',
             templateUrl: 'app/components/barChart/barChart.html',
-            scope: {},
+            scope: {
+                barData: '='
+            },
             controller: BarChartController,
             controllerAs: 'vm',
             bindToController: true
         };
     }
 
-    BarChartController.$inject = ['ChartService'];
+    BarChartController.$inject = ['$scope', 'ChartService'];
 
-    function BarChartController(ChartService) {
+    function BarChartController($scope, ChartService) {
         var vm = this;
 
         vm.init = init;
@@ -27,16 +29,21 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
-            //call service to get data and options
-            vm.chartData.push(setData(ChartService.getReturnReasonData()));
             vm.chartOptions.chart = setChartOptions(ChartService.setReturnReasonBasicOptions());
         }
 
+        $scope.$watch('vm.barData', function(){
+            if(vm.barData){
+                vm.chartData = [];
+                vm.chartData.push(setData(vm.barData.data));
+            }
+        });
+
         function setData(data) {
             return {
-                values: data.values,
-                key: data.key,
-                color: data.color
+                values: data,
+                key: 'Order reasons',
+                color: 'blue'
             }
         }
 

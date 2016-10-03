@@ -10,6 +10,8 @@
     reason-form-category="vm.reasonFormCategory"
     reason-form-limit="vm.reasonFormLimit"
     reason-form-submit="vm.reasonFormSubmit"
+    line-data="vm.lineData"
+    bar-data="vm.barData"
 >
     <div class="container" >
         <div class="row">
@@ -23,7 +25,7 @@
         </div>
         <div class="row">
             <section id="orderCountChart" class="col-md-12">
-                <line-chart></line-chart>
+                <line-chart line-data="vm.lineData"></line-chart>
             </section>
         </div>
         <div class="row">
@@ -37,7 +39,7 @@
         </div>
         <div class="row">
             <section id="reasonChart" class="col-md-12">
-                <bar-chart></bar-chart>
+                <bar-chart bar-data="vm.barData"></bar-chart>
             </section>
         </div>
     </div>
