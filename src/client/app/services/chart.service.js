@@ -20,7 +20,6 @@ function ChartService(ReturnServiceMock, ReturnReasonServiceMock) {
         returnOrderData.values = ReturnServiceMock;
         returnOrderData.key = 'return Order';
         returnOrderData.color = 'red';
-        returnOrderData.strokeWidth = 2;
 
         return returnOrderData;
     }
@@ -39,9 +38,10 @@ function ChartService(ReturnServiceMock, ReturnReasonServiceMock) {
     function setReturnOrderOptions() {
         return {
             type: 'lineChart',
-            xAxis: 'Date',
-            yAxis: 'Number of returns',
-            title: 'Returns over time'
+            xAxis: {
+                axisLabel: 'Date'
+            },
+            yAxis: 'Number of returns'
         };
     }
 
@@ -53,8 +53,7 @@ function ChartService(ReturnServiceMock, ReturnReasonServiceMock) {
             },
             yAxis: {
                 axisLabel: 'Number of returns'
-            },
-            title: 'Return Reasons'
+            }
         }
     }
 }

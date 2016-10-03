@@ -32,9 +32,6 @@
     "angular-material": "^1.1.1",
     "angular-nvd3": "^1.0.9"
   },
-  "resolutions": {
-    "angular": "1.5.3"
-  },
   "overrides": {
     "bootstrap": {
       "main": [

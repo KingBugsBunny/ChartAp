@@ -55,7 +55,7 @@
                     top: 20,
                     right: 20,
                     bottom: 40,
-                    left: 55
+                    left: 75
                 },
                 x: function(d){
                     return d.value;
@@ -64,11 +64,15 @@
                     return d.count;
                 },
                 xAxis: {
-                    axisLabel: chartBasics.xAxis
+                    axisLabel: 'reason',
+                    axisLabelDistance: 8
                 },
                 yAxis: {
-                    axisLabel: chartBasics.yAxis,
-                    axisLabelDistance: 10
+                    axisLabel: 'Number of Reasons',
+                    tickFormat: function(d){
+                        return d3.format(',.0f')(d);
+                    },
+                    axisLabelDistance: 5
                 },
                 title: chartBasics.title,
                 duration : 500,

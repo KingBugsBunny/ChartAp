@@ -32,8 +32,8 @@
             vm.chartOptions.chart = setChartOptions(ChartService.setReturnOrderOptions());
         }
 
-        $scope.$watch('vm.lineData', function(){
-            if(vm.lineData){
+        $scope.$watch('vm.lineData', function () {
+            if (vm.lineData) {
                 vm.chartData = [];
                 vm.chartData.push(setData(vm.lineData.data));
             }
@@ -51,12 +51,12 @@
         function setChartOptions(chartBasics) {
             return {
                 type: chartBasics.type,
-                height: 450,
+                height: 475,
                 margin: {
-                    top: 20,
-                    right: 20,
+                    top: 25,
+                    right: 25,
                     bottom: 40,
-                    left: 55
+                    left: 75
                 },
                 x: function (d, i) {
                     return i;
@@ -65,30 +65,21 @@
                     return d.count;
                 },
                 xAxis: {
-                    axisLabel: chartBasics.xAxis,
+                    axisLabel: 'Date',
                     tickFormat: function (d) {
-                        return d3.time.format('%x')(new Date(d.value));
+                        return d3.time.format('%x')(new Date(d))
                     },
-                    //rotateLabels: 30,
-                    showMaxMin: true
-                },
-                yAxis: {
-                    axisLabel: chartBasics.yAxis,
-                    axisLabelDistance: 10
-                },
-                title: {
-                    text: chartBasics.title,
-                    enable: true
-                },
-                caption: {
-                    enable: false,
-                    html: ''
-                },
-                useInteractiveGuideline: false,
-                interactive: false,
-                duration: 100,
-                deepWatchData: true
-            };
+                    yAxis: {
+                        axisLabel: chartBasics.yAxis,
+                        tickFormat: function (d) {
+                            return d3.format(',.0f')(d);
+                        }
+                    },
+                    useInteractiveGuideline: false,
+                    interactive: false,
+                    duration: 100
+                }
+            }
         }
     }
 })();

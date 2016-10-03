@@ -67,8 +67,8 @@
                     .then(function (payload) {
                         vm.lineData = payload.data;
 
-                    }, function () {
-                        logger.error('error occurred retrieving return order data');
+                    }, function (err) {
+                        logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return order data');
                     });
             }
         }
@@ -81,7 +81,7 @@
                         vm.barData = payload.data;
 
                     }, function(err) {
-                        logger.error('error occurred retrieving return reason data');
+                        logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return reason data');
                     });
             }
         }

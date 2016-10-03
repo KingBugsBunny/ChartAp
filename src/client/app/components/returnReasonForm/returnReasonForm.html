@@ -1,5 +1,6 @@
 <div class="container" ng-init="vm.init()">
     <div class="form-group">
+        <h3 class="text-center">Number of reasons for returns over time</h3>
         <form name="returnForm" ng-submit="vm.submit()">
             <label for="category">category</label>
                 <select id="category" ng-model="vm.reasonFormCategory">
@@ -9,6 +10,7 @@
             <md-datepicker ng-model="vm.reasonFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
             <label for="limit">limit</label>
             <select id="limit" ng-model="vm.reasonFormLimit">
+                <option value="10" selected>10</option>
                 <option ng-repeat="limit in vm.limits" value="{{limit}}">{{limit}}</option>
             </select>
             <input class="btn btn-primary" type="submit" value="Submit">

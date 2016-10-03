@@ -8,7 +8,10 @@
 
     function ReturnService(restService) {
 
-        var resource = 'http://13.84.149.217:8000/returns/count/order_date?';
+        var exUrl = 'http://13.84.149.217:8000';
+        var orderResource = '/returns/count/order_date?';
+        var reasonResource = '/returns/countdistinct/return_reason?';
+
 
         return {
             loadReturnCount: loadReturnCount,
@@ -21,7 +24,7 @@
         	}
 
             return restService.GET(
-                resource + 'start_date=' + startDate +
+                exUrl + orderResource + 'start_date=' + startDate +
                  '&end_date=' + endDate + '&category=' + category);
         }
 
@@ -31,7 +34,7 @@
         	}
 
             return restService.GET(
-                resource +
+                exUrl + reasonResource +
                  'start_date=' + startDate +'&end_date=' +
                  endDate + '&category=' + category +
                   '&limit=' + limit);

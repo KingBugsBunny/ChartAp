@@ -33,7 +33,7 @@
             vm.reasonFormStartDate = new Date('2016-06-18');
             vm.reasonFormEndDate =  new Date('2016-07-25');
             vm.reasonFormCategory = 'All categories';
-            vm.reasonFormLimit = 50;
+            vm.reasonFormLimit = 10;
             vm.reasonFormSubmit = false;
 
             //populate selects
@@ -56,9 +56,9 @@
             ];
 
             vm.limits = [
+                25,
                 50,
                 100,
-                150,
                 200
             ];
         }
