@@ -19,7 +19,6 @@
                 reasonFormCategory: '=',
                 reasonFormLimit: '=',
                 reasonFormSubmit: '='
-
             },
             controller: ContainerController,
             controllerAs: 'vm',
@@ -44,30 +43,44 @@
         } //end init
 
         function getOrderChartData(chartData) {
-            if(chartData.startDate && chartData.endDate) {
-                console.log('called order service!', chartData);
-            }
+            if (chartData.startDate && chartData.endDate) {
 
+                ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category)
+                    .then(function (data) {
+                        vm.orderPayload = data;
+                        console.log('orderData',data);
+                    }, function (err) {
+                        logger.error('error occured: ' + err);
+                    });
+            }
         }
 
         function getReasonChartData(chartData) {
-            if(chartData.startDate && chartData.endDate) {
-                console.log('called reason service!', chartData);
+            if (chartData.startDate && chartData.endDate) {
+
+                ReturnService.loadReasonsCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
+                    .then(function (data) {
+                        vm.reasonPayload = data;
+                        console.log('reasonData',data);
+
+                    }, function (err) {
+                        logger.error('error occured: ' + err);
+                    });
             }
         }
 
         //orderChart watchers
-        $scope.$watch('vm.orderFormStartDate', function() {
+        $scope.$watch('vm.orderFormStartDate', function () {
             vm.orderChartData.startDate = vm.orderFormStartDate;
         });
-        $scope.$watch('vm.orderFormEndDate', function() {
+        $scope.$watch('vm.orderFormEndDate', function () {
             vm.orderChartData.endDate = vm.orderFormEndDate;
         });
-        $scope.$watch('vm.orderFormCategory', function() {
+        $scope.$watch('vm.orderFormCategory', function () {
             vm.orderChartData.category = vm.orderFormCategory;
         });
-        $scope.$watch('vm.orderFormSubmit', function() {
-            if(vm.orderFormSubmit === true){
+        $scope.$watch('vm.orderFormSubmit', function () {
+            if (vm.orderFormSubmit === true) {
                 getOrderChartData(vm.orderChartData);
                 vm.orderFormSubmit = false;
             }
@@ -76,21 +89,21 @@
 
         //reasonChart watchers
         //orderChart watchers
-        $scope.$watch('vm.reasonFormStartDate', function() {
+        $scope.$watch('vm.reasonFormStartDate', function () {
             vm.reasonChartData.startDate = vm.reasonFormStartDate;
         });
-        $scope.$watch('vm.reasonFormEndDate', function() {
+        $scope.$watch('vm.reasonFormEndDate', function () {
             vm.reasonChartData.endDate = vm.reasonFormEndDate;
         });
-        $scope.$watch('vm.reasonFormCategory', function() {
+        $scope.$watch('vm.reasonFormCategory', function () {
             vm.reasonChartData.category = vm.reasonFormCategory;
         });
-        $scope.$watch('vm.reasonFormLimit', function() {
+        $scope.$watch('vm.reasonFormLimit', function () {
             vm.reasonChartData.limit = vm.reasonFormLimit;
         });
 
-        $scope.$watch('vm.reasonFormSubmit', function() {
-            if(vm.reasonFormSubmit === true) {
+        $scope.$watch('vm.reasonFormSubmit', function () {
+            if (vm.reasonFormSubmit === true) {
                 getReasonChartData(vm.reasonChartData);
                 vm.reasonFormSubmit = false;
             }

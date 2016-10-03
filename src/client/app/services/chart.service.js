@@ -1,3 +1,6 @@
+(function(){
+    'use strict';
+
 angular.module('app.services')
     .factory('chartService', chartService);
 
@@ -54,6 +57,5 @@ function chartService(ReturnServiceMock, ReturnReasonServiceMock) {
             title: 'Return Reasons'
         }
     }
-
 }
-
+})();

@@ -8,11 +8,11 @@
 
     function ReturnService(restService) {
 
-        var resource = '/returns/count/order_date/';
+        var resource = '/returns/count/order_date?';
 
         return {
             loadReturnCount: loadReturnCount,
-            loadReasonsCount: loadReasonsCount
+            loadReasonCount: loadReasonCount
         };
 
         function loadReturnCount(startDate, endDate, category) {
@@ -21,24 +21,19 @@
         	}
 
             return restService.GET(
-                resource + 'category=' + category +
-                '&start_date=' + startDate +
-                 '&end_date=' + endDate);
+                resource + 'start_date=' + startDate +
+                 '&end_date=' + endDate + '&category=' + category);
         }
 
-        function loadReasonsCount(startDate, endDate, category, limit) {
-        	if (category === undefined) {
+        function loadReasonCount(startDate, endDate, category, limit) {
+        	if (category === undefined || category === 'All categories') {
         		category = '';
         	}
 
-        	if (limit === undefined) {
-        		limit = '';
-        	}
-
             return restService.GET(
-                resource + 'category=' + category +
-                 '&start_date=' + startDate +
-                  '&end_date' + endDate +
+                resource +
+                 'start_date=' + startDate +'&end_date' +
+                 endDate + '&category=' + category +
                   '&limit=' + limit);
         }
     }

@@ -8,8 +8,8 @@
             <md-datepicker ng-model="vm.reasonFormStartDate" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
             <md-datepicker ng-model="vm.reasonFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
             <label for="limit">limit</label>
-            <select name="limit" id="limit" ng-model="vm.reasonFormLimit">
-                <option ng-repeat="limit in vm.limits" value="{{limit}}" selected>{{limit}}</option>
+            <select id="limit" ng-model="vm.reasonFormLimit">
+                <option ng-repeat="limit in vm.limits" value="{{limit}}">{{limit}}</option>
             </select>
             <input class="btn-primary" type="submit" value="Submit">
         </form>
