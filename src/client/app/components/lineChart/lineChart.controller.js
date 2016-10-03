@@ -16,9 +16,9 @@
         };
     }
 
-    LineChartController.$inject = ['chartService'];
+    LineChartController.$inject = ['ChartService'];
 
-    function LineChartController(chartService) {
+    function LineChartController(ChartService) {
         var vm = this;
 
         vm.init = init;
@@ -29,11 +29,11 @@
 
 
             //call service to get return Order data & options
-            var data = chartService.getReturnData();
+            var data = ChartService.getReturnData();
 
             vm.chartData.push(setData(data));
 
-            vm.chartOptions.chart = setChartOptions(chartService.setReturnOrderOptions(), data.values[0], data.values[data.values.length]);
+            vm.chartOptions.chart = setChartOptions(ChartService.setReturnOrderOptions(), data.values[0], data.values[data.values.length]);
         }
 
         function setData(data) {

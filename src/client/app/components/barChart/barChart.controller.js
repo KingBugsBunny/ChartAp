@@ -16,9 +16,9 @@
         };
     }
 
-    BarChartController.$inject = ['chartService'];
+    BarChartController.$inject = ['ChartService'];
 
-    function BarChartController(chartService) {
+    function BarChartController(ChartService) {
         var vm = this;
 
         vm.init = init;
@@ -28,8 +28,8 @@
             vm.chartOptions = {};
 
             //call service to get data and options
-            vm.chartData.push(setData(chartService.getReturnReasonData()));
-            vm.chartOptions.chart = setChartOptions(chartService.setReturnReasonBasicOptions());
+            vm.chartData.push(setData(ChartService.getReturnReasonData()));
+            vm.chartOptions.chart = setChartOptions(ChartService.setReturnReasonBasicOptions());
         }
 
         function setData(data) {

@@ -27,7 +27,7 @@
         };
     }
 
-    ContainerController.$inject = ['$scope', 'logger', 'ReturnService'];
+    ContainerController.$inject = ['$scope', 'ReturnService'];
 
     function ContainerController($scope, ReturnService) {
         var vm = this;
@@ -39,16 +39,23 @@
         function init() {
             vm.orderChartData = {};
             vm.reasonChartData = {};
+            vm.lineData = {};
 
         } //end init
+
 
         function getOrderChartData(chartData) {
             if (chartData.startDate && chartData.endDate) {
 
                 ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category)
-                    .then(function (data) {
-                        vm.orderPayload = data;
-                        console.log('orderData',data);
+                    .then(function (payload) {
+                        vm.lineData.values = payload;
+                        vm.lineData.key = 'return Order';
+                        vm.lineData.strokeWidth = 2;
+                        vm.lineData.color = 'red';
+
+                        console.log('orderData',payload);
+
                     }, function (err) {
                         logger.error('error occured: ' + err);
                     });
@@ -59,11 +66,11 @@
             if (chartData.startDate && chartData.endDate) {
 
                 ReturnService.loadReasonsCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
-                    .then(function (data) {
+                    .then(function(data) {
                         vm.reasonPayload = data;
                         console.log('reasonData',data);
 
-                    }, function (err) {
+                    }, function(err) {
                         logger.error('error occured: ' + err);
                     });
             }

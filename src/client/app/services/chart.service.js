@@ -2,10 +2,10 @@
     'use strict';
 
 angular.module('app.services')
-    .factory('chartService', chartService);
+    .factory('ChartService', ChartService);
 
-chartService.$inject = ['ReturnServiceMock', 'ReturnReasonServiceMock'];
-function chartService(ReturnServiceMock, ReturnReasonServiceMock) {
+ChartService.$inject = ['ReturnServiceMock', 'ReturnReasonServiceMock'];
+function ChartService(ReturnServiceMock, ReturnReasonServiceMock) {
 
     return {
         getReturnData: getReturnData,
