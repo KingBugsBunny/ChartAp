@@ -58,8 +58,8 @@
                     bottom: 40,
                     left: 75
                 },
-                x: function (d, i) {
-                    return i;
+                x: function (d) {
+                    return d3.time.format('%Y-%m-%d').parse(d.value);
                 },
                 y: function (d) {
                     return d.count;
