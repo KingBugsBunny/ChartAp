@@ -18,9 +18,9 @@
         };
     }
 
-    LineChartController.$inject = ['$scope', 'ChartService'];
+    LineChartController.$inject = ['$scope'];
 
-    function LineChartController($scope, ChartService) {
+    function LineChartController($scope) {
         var vm = this;
 
         vm.init = init;
@@ -29,7 +29,7 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
-            vm.chartOptions.chart = setChartOptions(ChartService.setReturnOrderOptions());
+            vm.chartOptions.chart = setChartOptions();
         }
 
         $scope.$watch('vm.lineData', function () {
@@ -50,7 +50,7 @@
 
         function setChartOptions(chartBasics) {
             return {
-                type: chartBasics.type,
+                type: 'lineChart',
                 height: 475,
                 margin: {
                     top: 25,
@@ -70,7 +70,7 @@
                         return d3.time.format('%x')(new Date(d))
                     },
                     yAxis: {
-                        axisLabel: chartBasics.yAxis,
+                        axisLabel: 'Number of Returns',
                         tickFormat: function (d) {
                             return d3.format(',.0f')(d);
                         }

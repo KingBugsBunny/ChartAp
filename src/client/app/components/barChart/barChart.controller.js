@@ -18,9 +18,9 @@
         };
     }
 
-    BarChartController.$inject = ['$scope', 'ChartService'];
+    BarChartController.$inject = ['$scope'];
 
-    function BarChartController($scope, ChartService) {
+    function BarChartController($scope) {
         var vm = this;
 
         vm.init = init;
@@ -29,7 +29,7 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
-            vm.chartOptions.chart = setChartOptions(ChartService.setReturnReasonBasicOptions());
+            vm.chartOptions.chart = setChartOptions();
         }
 
         $scope.$watch('vm.barData', function(){
@@ -49,7 +49,7 @@
 
         function setChartOptions(chartBasics) {
             return {
-                type: chartBasics.type,
+                type: 'multiBarChart',
                 height: 350,
                 margin: {
                     top: 20,
@@ -74,7 +74,6 @@
                     },
                     axisLabelDistance: 5
                 },
-                title: chartBasics.title,
                 duration : 500,
                 stacked: true
             };
