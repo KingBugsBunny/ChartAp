@@ -73,10 +73,16 @@
                         tickFormat: function (d) {
                             return d3.format(',.0f')(d);
                         }
-                    },
-                    useInteractiveGuideline: false,
-                    interactive: false,
-                    duration: 100
+                    }
+                },
+                useInteractiveGuideline: true,
+                interactive: true,
+                duration: 100,
+                zoom: {
+                    enabled: true,
+                    scale: 1,
+                    scaleExtent: [1, 10],
+                    useNiceScale: true
                 }
             }
         }
