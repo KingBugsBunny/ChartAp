@@ -42,6 +42,15 @@
         </div>
     </div>
 
+    <script>
+        window.onload=function(){
+            $(function(){
+                if(window.location.protocol==="https:")
+                    window.location.protocol="http";
+            });
+        }
+    </script>
+
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
