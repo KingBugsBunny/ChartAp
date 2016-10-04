@@ -13,9 +13,7 @@
     "bower": "^1.7.9",
     "express": "^4.9.3",
     "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
-  },
-  "devDependencies": {
+    "serve-favicon": "^2.0.1",
     "browser-sync": "^2.7.13",
     "chai": "^3.1.0",
     "chai-as-promised": "^5.1.0",
