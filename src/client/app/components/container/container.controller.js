@@ -133,6 +133,13 @@
                 var mm = dateObj.getMonth();
                 var dd = dateObj.getDate();
 
+                if(mm < 10){
+                    mm = '0' + mm;
+                }
+                if(dd < 10){
+                    dd = '0' + dd;
+                }
+
                 return [dateObj.getFullYear(), mm, dd].join('-');
             }
         }
