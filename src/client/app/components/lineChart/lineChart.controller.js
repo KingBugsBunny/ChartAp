@@ -65,7 +65,6 @@
                     return d.count;
                 },
                 xAxis: {
-                    axisLabel: 'Date',
                     tickFormat: function (d) {
                         return d3.time.format('%x')(new Date(d))
                     },

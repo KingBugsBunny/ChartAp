@@ -64,7 +64,6 @@
                     return d.count;
                 },
                 xAxis: {
-                    axisLabel: 'reason',
                     axisLabelDistance: 8
                 },
                 yAxis: {
