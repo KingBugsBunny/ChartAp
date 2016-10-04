@@ -18,9 +18,13 @@
             loadReasonCount: loadReasonCount
         };
 
-        function loadReturnCount(startDate, endDate, category) {
+        function loadReturnCount(startDate, endDate, category, groupby) {
         	if (category === undefined || category === 'All categories'){
         		category = '';
+        	}
+
+        	if(groupby === undefined || groupby === 'day'){
+        	    groupby = '';
         	}
 
             return restService.GET(

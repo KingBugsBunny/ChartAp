@@ -13,6 +13,7 @@
                 orderFormStartDate: '=',
                 orderFormEndDate: '=',
                 orderFormCategory: '=',
+                orderFormGroupby: '=',
                 orderFormSubmit: '='
             },
             controller: ReturnOrderFormController,
@@ -30,8 +31,7 @@
 
         function init() {
 
-            vm.orderFormStartDate = new Date('2016-06-18');
-            vm.orderFormEndDate = new Date('2016-07-25');
+            vm.orderFormGroupby = 'day';
             vm.orderFormCategory = 'All categories';
             vm.orderFormSubmit = false;
 
@@ -52,6 +52,12 @@
                 'Men\'s Clothing',
                 'Men\'s Grooming'
             ];
+
+            vm.groupBy = [
+                'day',
+                'week',
+                'month'
+            ]
         }
 
         function submit() {

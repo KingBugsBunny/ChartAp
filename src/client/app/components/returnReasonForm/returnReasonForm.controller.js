@@ -30,8 +30,7 @@
 
         function init() {
 
-            vm.reasonFormStartDate = new Date('2016-06-18');
-            vm.reasonFormEndDate =  new Date('2016-07-25');
+
             vm.reasonFormCategory = 'All categories';
             vm.reasonFormLimit = 10;
             vm.reasonFormSubmit = false;

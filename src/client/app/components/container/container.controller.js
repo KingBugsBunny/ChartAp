@@ -13,6 +13,7 @@
                 orderFormStartDate: '=',
                 orderFormEndDate: '=',
                 orderFormCategory: '=',
+                orderFormGroupby: '=',
                 orderFormSubmit: '=',
                 reasonFormStartDate: '=',
                 reasonFormEndDate: '=',
@@ -63,7 +64,7 @@
         function getOrderChartData(chartData) {
             if (chartData.startDate && chartData.endDate) {
 
-                ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category)
+                ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category, chartData.groupby)
                     .then(function (payload) {
                         vm.lineData = payload.data;
 
@@ -95,6 +96,9 @@
         });
         $scope.$watch('vm.orderFormCategory', function () {
                 vm.orderChartData.category = vm.orderFormCategory;
+        });
+        $scope.$watch('vm.orderFormGroupby', function () {
+            vm.orderChartData.groupby = vm.orderFormGroupby;
         });
         $scope.$watch('vm.orderFormSubmit', function () {
             if (vm.orderFormSubmit === true) {

@@ -6,6 +6,10 @@
                 <select id="category" ng-model="vm.orderFormCategory">
                     <option ng-repeat="category in vm.categories" value="{{category}}">{{category}}</option>
                 </select>
+            <label for="groupby">group by</label>
+            <select id="groupby" ng-model="vm.orderFormGroupby">
+                <option ng-repeat="group in vm.groupBy" value="{{group}}">{{group}}</option>
+            </select>
             <md-datepicker id="startDate" ng-model="vm.orderFormStartDate" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
             <md-datepicker id="endDate" ng-model="vm.orderFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
             <input class="btn btn-primary" type="submit" value="Submit">
