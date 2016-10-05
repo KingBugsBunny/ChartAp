@@ -26,7 +26,7 @@ My HTML is defined in the dashboard.html under features.
 
 <h3>Architecture</h3>
 
-The architecture is as such:
+The architecture is as such:</br>
 `<ui-view>`</br>
    &nbsp;&nbsp;&nbsp; `<dashboard>`</br>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     `<container>`</br>
