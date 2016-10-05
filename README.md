@@ -27,16 +27,16 @@ My HTML is defined in the dashboard.html under features.
 <h3>Architecture</h3>
 
 The architecture is as such:
-`<ui-view>`
-   &nbsp;&nbsp;&nbsp; `<dashboard>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     `<container>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<lineForm></lineForm>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<lineChart></lineChart>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<barForm></barForm>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<barChart></barChart>`
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     `</container>`
-   &nbsp;&nbsp;&nbsp; `</dashboard>`
- ` </ui-view>`
+`<ui-view>`</br>
+   &nbsp;&nbsp;&nbsp; `<dashboard>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     `<container>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<lineForm></lineForm>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<lineChart></lineChart>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<barForm></barForm>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         `<barChart></barChart>`</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     `</container>`</br>
+   &nbsp;&nbsp;&nbsp; `</dashboard>`</br>
+ ` </ui-view>`</br>
  
  The app was architected with inspiration from Angular 2's nested component system.
  
