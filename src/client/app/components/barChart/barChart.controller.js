@@ -29,16 +29,20 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
+            //set options first as the chart will throw an error if the chart isn't configured. doesn't need data at first
             vm.chartOptions.chart = setChartOptions();
         }
 
+        //watch for data from container service and push it to array
         $scope.$watch('vm.barData', function(){
             if(vm.barData){
+                //this resets the array as pushing merely adds to array
                 vm.chartData = [];
                 vm.chartData.push(setData(vm.barData.data));
             }
         });
 
+        //get data and define configuration related to data
         function setData(data) {
             return {
                 values: data,
@@ -47,7 +51,8 @@
             }
         }
 
-        function setChartOptions(chartBasics) {
+        //define the configuration used on the chart. A multiBarChart is used as there wasn't an option for a single bar chart in nvd3
+        function setChartOptions() {
             return {
                 type: 'multiBarChart',
                 height: 350,

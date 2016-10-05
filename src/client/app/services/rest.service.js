@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    // This service is the service we reuse for every one of our apps at briebug
+
     /**
      * @ngdoc service
      * @name app.services.service:restService
@@ -32,6 +34,7 @@
      * backend service
      */
     function restService($http, $q) {
+        //define the vars we will reuse
         var service = {
             GET: get,
             PUT: put,
@@ -41,6 +44,8 @@
         };
 
         return service;
+
+        //each get put post del method all call makeCall with their type and params
 
         /**
          * @ngdoc method
@@ -139,6 +144,7 @@
          * # resolveDeferred
          * resolveDeferred will take an HTTP response object and resolve or reject it
          */
+
         function resolveDeferred(deferred, result, callback) {
             if (isNonError(result.status)) {
                 // process paging headers

@@ -30,9 +30,11 @@
 
         function init() {
 
-
+            //init values set on form. I am unsure if this way is slower than setting them in HTML
             vm.reasonFormCategory = 'All categories';
-            vm.reasonFormLimit = 10;
+            vm.reasonFormLimit = '10';
+
+            //this value is watched in the container and fires the service if true
             vm.reasonFormSubmit = false;
 
             //populate selects
@@ -55,14 +57,15 @@
             ];
 
             vm.limits = [
-                10,
-                25,
-                50,
-                100,
-                200
+                '10',
+                '25',
+                '50',
+                '100',
+                '200'
             ];
         }
 
+        //sets submit true and causes the service to fire in the containerController
         function submit() {
             vm.reasonFormSubmit = true;
         }

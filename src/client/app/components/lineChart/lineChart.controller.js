@@ -29,6 +29,7 @@
             vm.chartData = [];
             vm.chartOptions = {};
 
+            //set options first as the chart will throw an error if the chart isn't configured. doesn't need data at first
             vm.chartOptions.chart = setChartOptions();
         }
 
@@ -39,6 +40,7 @@
             }
         });
 
+        //get data and define configuration related to data
         function setData(data) {
             return {
                 values: data,
@@ -48,7 +50,8 @@
             }
         }
 
-        function setChartOptions(chartBasics) {
+        //define the configuration used on the chart
+        function setChartOptions() {
             return {
                 type: 'lineChart',
                 height: 475,
@@ -77,13 +80,7 @@
                 },
                 useInteractiveGuideline: true,
                 interactive: true,
-                duration: 100,
-                zoom: {
-                    enabled: true,
-                    scale: 1,
-                    scaleExtent: [1, 10],
-                    useNiceScale: true
-                }
+                duration: 100
             }
         }
     }

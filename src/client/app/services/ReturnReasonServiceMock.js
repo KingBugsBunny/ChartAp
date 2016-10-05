@@ -4,6 +4,7 @@
         .factory('ReturnReasonServiceMock', ReturnReasonServiceMock);
 
     function ReturnReasonServiceMock() {
+        //mock data for bar chart, taken from an API call
         return {
             key: 'Order reasons',
             color: 'blue',

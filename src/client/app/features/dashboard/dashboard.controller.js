@@ -7,5 +7,7 @@
 
     function DashboardController() {
         var vm = this;
+
+        //this is merely the shell for this route
     }
 })();

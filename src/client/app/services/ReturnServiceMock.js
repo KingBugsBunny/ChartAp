@@ -5,6 +5,7 @@
         .factory('ReturnServiceMock', ReturnServiceMock);
 
     function ReturnServiceMock() {
+        //mock data for line chart, taken from an API call
         return {
             key: 'Return Order',
             color: 'red',

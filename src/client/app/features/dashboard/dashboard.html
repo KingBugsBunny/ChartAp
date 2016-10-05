@@ -1,6 +1,7 @@
 <section class="navbar navbar-center">
     <header></header>
 </section>
+    <!-- The beginning of the apps frontend architecture-->
 <container order-form-start-date="vm.OrderFormStartDate"
            order-form-end-date="vm.orderFormEndDate"
            order-form-category="vm.orderFormCategory"
@@ -14,6 +15,8 @@ order-form-submit="vm.orderFormSubmit"
     line-data="vm.lineData"
     bar-data="vm.barData"
 >
+    <!--the container transclude everything inside of it for a psuedo parent state,
+     The idea here was to create an app with angular2 style architecture-->
     <div class="container" >
         <div class="row">
             <section class="col-md-6">
