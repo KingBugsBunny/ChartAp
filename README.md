@@ -1,4 +1,4 @@
-# SupplyAi Assessment
+# ChartAp
 
 Hosted here:  <a href="http://still-journey-60085.herokuapp.com/">http://still-journey-60085.herokuapp.com/</a>
 
