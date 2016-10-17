@@ -1,4 +1,4 @@
-# SupplyAi Assessment
+# ChartAp
 
 Hosted here:  <a href="http://still-journey-60085.herokuapp.com/">http://still-journey-60085.herokuapp.com/</a>
 
@@ -79,8 +79,8 @@ Upon success, the payload is assigned to an object on the isolate scope that is 
 
 <h5> Rendering charts <h5>
 
-On app init options are defined for NVD3 to setup the charts in the chart components, data isn't necessary on the initial run and will watch for when the chartData
-object is defined. If it is defined the watchers will populate the chart. Which, through our second calls will destroy the old chart data and then render the new data.
+<p>On app init options are defined for NVD3 to setup the charts in the chart components, data isn't necessary on the initial run and will watch for when the chartData
+object is defined. If it is defined the watchers will populate the chart. Which, through our second calls will destroy the old chart data and then render the new data.<p>
 
 
 <h5>That's the app in a nutshell</h5>
