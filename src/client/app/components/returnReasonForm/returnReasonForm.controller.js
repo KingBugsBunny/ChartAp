@@ -65,7 +65,6 @@
         //sets submit true and causes the service to fire in the containerController
         function submit() {
             vm.reasonForm.submit = true;
-            console.log('i ran');
         }
     }
 })();
