@@ -2,16 +2,8 @@
     <header></header>
 </section>
     <!-- The beginning of the apps frontend architecture-->
-<container order-form-start-date="vm.OrderFormStartDate"
-           order-form-end-date="vm.orderFormEndDate"
-           order-form-category="vm.orderFormCategory"
-           order-form-groupby="vm.orderFormGroupby"
-order-form-submit="vm.orderFormSubmit"
-    reason-form-start-date="vm.reasonFormStartDate"
-    reason-form-end-date="vm.reasonFormEndDate"
-    reason-form-category="vm.reasonFormCategory"
-    reason-form-limit="vm.reasonFormLimit"
-    reason-form-submit="vm.reasonFormSubmit"
+<container order-form="vm.orderForm"
+    reason-form="vm.reasonForm"
     line-data="vm.lineData"
     bar-data="vm.barData"
 >
@@ -20,11 +12,7 @@ order-form-submit="vm.orderFormSubmit"
     <div class="container" >
         <div class="row">
             <section class="col-md-6">
-                <return-order-form order-form-start-date="vm.OrderFormStartDate"
-                                   order-form-end-date="vm.orderFormEndDate"
-                                   order-form-category="vm.orderFormCategory"
-                                   order-form-groupby="vm.orderFormGroupby"
-                                   order-form-submit="vm.orderFormSubmit"
+                <return-order-form order-form="vm.orderForm"
                     ></return-order-form>
             </section>
         </div>
@@ -35,11 +23,7 @@ order-form-submit="vm.orderFormSubmit"
         </div>
         <div class="row">
             <section class=" col-md-6">
-                <return-reason-form reason-form-start-date="vm.reasonFormStartDate"
-                                    reason-form-end-date="vm.reasonFormEndDate"
-                                    reason-form-category="vm.reasonFormCategory"
-                                    reason-form-limit="vm.reasonFormLimit"
-                                    reason-form-submit="vm.reasonFormSubmit"></return-reason-form>
+                <return-reason-form reason-form="vm.reasonForm"></return-reason-form>
             </section>
         </div>
         <div class="row">

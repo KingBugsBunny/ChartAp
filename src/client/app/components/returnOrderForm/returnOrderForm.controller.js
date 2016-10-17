@@ -10,11 +10,7 @@
             restrict: 'E',
             templateUrl: 'app/components/returnOrderForm/returnOrderForm.html',
             scope: {
-                orderFormStartDate: '=',
-                orderFormEndDate: '=',
-                orderFormCategory: '=',
-                orderFormGroupby: '=',
-                orderFormSubmit: '='
+                orderForm: '='
             },
             controller: ReturnOrderFormController,
             controllerAs: 'vm',
@@ -30,13 +26,13 @@
 
 
         function init() {
-
-            //init values set on form. I am unsure if this way is slower than setting them in HTML
-            vm.orderFormGroupby = 'day';
-            vm.orderFormCategory = 'All categories';
-
-            //this value is watched in the container and fires the service if true
-            vm.orderFormSubmit = false;
+            vm.orderForm = {
+                category: 'All categories',
+                groupby: 'day',
+                startDate: '',
+                endDate: '',
+                submit : false
+            };
 
             //populate my selection options
             vm.categories = [
@@ -66,7 +62,7 @@
 
         //sets submit true and causes the service to fire in the containerController
         function submit() {
-            vm.orderFormSubmit = true;
+            vm.orderForm.submit = true;
         }
     }
 })();

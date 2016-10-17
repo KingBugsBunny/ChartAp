@@ -10,11 +10,7 @@
             restrict: 'E',
             templateUrl: 'app/components/returnReasonForm/returnReasonForm.html',
             scope: {
-                reasonFormStartDate: '=',
-                reasonFormEndDate: '=',
-                reasonFormCategory: '=',
-                reasonFormLimit: '=',
-                reasonFormSubmit: '='
+                reasonForm: '='
             },
             controller: ReturnReasonFormController,
             controllerAs: 'vm',
@@ -30,12 +26,13 @@
 
         function init() {
 
-            //init values set on form. I am unsure if this way is slower than setting them in HTML
-            vm.reasonFormCategory = 'All categories';
-            vm.reasonFormLimit = '10';
-
-            //this value is watched in the container and fires the service if true
-            vm.reasonFormSubmit = false;
+            vm.reasonForm = {
+                category : 'All categories',
+                limit : '10',
+                startDate: '',
+                endDate: '',
+                submit : false
+            };
 
             //populate selects
             vm.categories = [
@@ -67,7 +64,8 @@
 
         //sets submit true and causes the service to fire in the containerController
         function submit() {
-            vm.reasonFormSubmit = true;
+            vm.reasonForm.submit = true;
+            console.log('i ran');
         }
     }
 })();

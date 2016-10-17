@@ -12,16 +12,8 @@
             scope: {
                 //I should cut down the amount of vars i am exposing and place them in objects but I was running
                 // into problems doing so. In their preset state they function fine but aren't very clean
-                orderFormStartDate: '=',
-                orderFormEndDate: '=',
-                orderFormCategory: '=',
-                orderFormGroupby: '=',
-                orderFormSubmit: '=',
-                reasonFormStartDate: '=',
-                reasonFormEndDate: '=',
-                reasonFormCategory: '=',
-                reasonFormLimit: '=',
-                reasonFormSubmit: '=',
+                orderForm: '=',
+                reasonForm: '=',
                 lineData: '=',
                 barData: '='
             },
@@ -46,6 +38,9 @@
             //init objects so i can set properties on them
             vm.orderChartData = {};
             vm.reasonChartData = {};
+            vm.orderForm = {};
+            vm.reasonForm = {};
+
 
             //initial data for lineChart
             vm.initialOrderData = {
@@ -96,45 +91,45 @@
         }
 
         //orderChart watchers, watch all values on the order form and set them if they change
-        $scope.$watch('vm.orderFormStartDate', function () {
-            vm.orderChartData.startDate = parseDate(vm.orderFormStartDate);
+        $scope.$watch('vm.orderForm.startDate', function () {
+            vm.orderChartData.startDate = parseDate(vm.orderForm.startDate);
         });
-        $scope.$watch('vm.orderFormEndDate', function () {
-            vm.orderChartData.endDate = parseDate(vm.orderFormEndDate);
+        $scope.$watch('vm.orderForm.endDate', function () {
+            vm.orderChartData.endDate = parseDate(vm.orderForm.endDate);
         });
-        $scope.$watch('vm.orderFormCategory', function () {
-                vm.orderChartData.category = vm.orderFormCategory;
+        $scope.$watch('vm.orderForm.category', function () {
+                vm.orderChartData.category = vm.orderForm.category;
         });
-        $scope.$watch('vm.orderFormGroupby', function () {
-            vm.orderChartData.groupby = vm.orderFormGroupby;
+        $scope.$watch('vm.orderForm.groupby', function () {
+            vm.orderChartData.groupby = vm.orderForm.formGroupby;
         });
         //submit form if submit is pressed
-        $scope.$watch('vm.orderFormSubmit', function () {
-            if (vm.orderFormSubmit === true) {
+        $scope.$watch('vm.orderForm.submit', function () {
+            if (vm.orderForm.submit === true) {
                 getOrderChartData(vm.orderChartData);
-                vm.orderFormSubmit = false;
+                vm.orderForm.submit = false;
             }
         });
 
         //reasonChart watchers, watch all values on the reason form and set them if they change
-        $scope.$watch('vm.reasonFormStartDate', function () {
-            vm.reasonChartData.startDate = parseDate(vm.reasonFormStartDate);
+        $scope.$watch('vm.reasonForm.startDate', function () {
+            vm.reasonChartData.startDate = parseDate(vm.reasonForm.startDate);
         });
-        $scope.$watch('vm.reasonFormEndDate', function () {
-            vm.reasonChartData.endDate = parseDate(vm.reasonFormEndDate);
+        $scope.$watch('vm.reasonForm.endDate', function () {
+            vm.reasonChartData.endDate = parseDate(vm.reasonForm.endDate);
         });
-        $scope.$watch('vm.reasonFormCategory', function () {
-                vm.reasonChartData.category = vm.reasonFormCategory;
+        $scope.$watch('vm.reasonForm.category', function () {
+                vm.reasonChartData.category = vm.reasonForm.category;
         });
-        $scope.$watch('vm.reasonFormLimit', function () {
-            vm.reasonChartData.limit = vm.reasonFormLimit;
+        $scope.$watch('vm.reasonForm.limit', function () {
+            vm.reasonChartData.limit = vm.reasonForm.limit;
         });
 
         //submit form if submit is pressed
-        $scope.$watch('vm.reasonFormSubmit', function () {
-            if (vm.reasonFormSubmit === true) {
+        $scope.$watch('vm.reasonForm.submit', function () {
+            if (vm.reasonForm.submit === true) {
                 getReasonChartData(vm.reasonChartData);
-                vm.reasonFormSubmit = false;
+                vm.reasonForm.submit = false;
             }
         });
 

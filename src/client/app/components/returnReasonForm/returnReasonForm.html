@@ -3,13 +3,13 @@
         <h3 class="text-center">Reasons for returns over time</h3>
         <form name="returnForm" ng-submit="vm.submit()" novalidate>
             <label for="category">category</label>
-                <select id="category" ng-model="vm.reasonFormCategory">
+                <select id="category" ng-model="vm.reasonForm.category">
                     <option ng-repeat="category in vm.categories" value="{{category}}">{{category}}</option>
                 </select>
-            <md-datepicker ng-model="vm.reasonFormStartDate" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
-            <md-datepicker ng-model="vm.reasonFormEndDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
+            <md-datepicker ng-model="vm.reasonForm.startDate" md-placeholder="Pick a start Date" md-hide-icons="calendar" ng-required></md-datepicker>
+            <md-datepicker ng-model="vm.reasonForm.endDate" md-placeholder="Pick an end date" md-hide-icons="calendar" ng-required></md-datepicker>
             <label for="limit">limit</label>
-            <select id="limit" ng-model="vm.reasonFormLimit" required>
+            <select id="limit" ng-model="vm.reasonForm.limit" required>
                 <option ng-repeat="limit in vm.limits" value="{{limit}}">{{limit}}</option>
             </select>
             <input class="btn btn-primary" type="submit" value="Submit">
