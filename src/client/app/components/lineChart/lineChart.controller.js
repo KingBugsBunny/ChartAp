@@ -61,7 +61,7 @@
                     bottom: 40,
                     left: 75
                 },
-                x: function (d) {
+                x: function (d, i) {
                     return d3.time.format('%Y-%m-%d').parse(d.value);
                 },
                 y: function (d) {
@@ -70,12 +70,12 @@
                 xAxis: {
                     tickFormat: function (d) {
                         return d3.time.format('%x')(new Date(d))
-                    },
-                    yAxis: {
-                        axisLabel: 'Number of Returns',
-                        tickFormat: function (d) {
-                            return d3.format(',.0f')(d);
-                        }
+                    }
+                },
+                yAxis: {
+                    axisLabel: 'Number of Returns',
+                    tickFormat: function (d) {
+                        return d3.format(',.0f')(d);
                     }
                 },
                 useInteractiveGuideline: true,
