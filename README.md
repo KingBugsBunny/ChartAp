@@ -87,9 +87,11 @@ object is defined. If it is defined the watchers will populate the chart. Which,
 
 # Things to be added
 
-1. form validation needs to be fixed, and validation styles need to be defined (e.g. ng-prisitne)
+1. ~~form validation needs to be fixed, and validation styles need to be defined (e.g. ng-prisitne)~~('Fixed as of 10/17/2016') Validation could use prompts
 
-2. bootstrap styles need to be overriden such as the header's size as well as rows and columns need to be defined for each specific breakpoint.
+2. bootstrap styles need to be overriden such as ~~the header's size~~('Fixed as of 10/17/2016') as well as rows and columns need to be defined for each specific breakpoint.
 The app could benefit from a makeover in general
 
-3. Once the assessment is over I need to convert the container calls to use the mockData services
+3. Once the API is disabled I need to convert the container calls to use the mockData services (still working as of 10/17/2016)
+
+4. ~~variables need to be cleaned up~~ 'Fixed as of 10/17/2016'
