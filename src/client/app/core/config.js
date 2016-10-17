@@ -13,8 +13,8 @@
     }
 
     var config = {
-        appErrorPrefix: '[SupplyAi Error] ',
-        appTitle: 'SupplyAi'
+        appErrorPrefix: '[ChartAp Error] ',
+        appTitle: 'ChartAp'
     };
 
     core.value('config', config);
