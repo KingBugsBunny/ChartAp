@@ -29,8 +29,8 @@
             vm.reasonForm = {
                 category : 'All categories',
                 limit : '10',
-                startDate: '',
-                endDate: '',
+                startDate: new Date('2016-06-18'),
+                endDate: new Date('2016-07-25'),
                 submit : false
             };
 
