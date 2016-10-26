@@ -10,8 +10,6 @@
             restrict: 'E',
             templateUrl: 'app/components/container/container.html',
             scope: {
-                //I should cut down the amount of vars i am exposing and place them in objects but I was running
-                // into problems doing so. In their preset state they function fine but aren't very clean
                 orderForm: '=',
                 reasonForm: '=',
                 lineData: '=',
@@ -62,7 +60,7 @@
             getReasonChartData(vm.initialReasonData);
         } //end init
 
-        //call service and get data for linechart
+        //call service and get data for line-chart
         function getOrderChartData(chartData) {
             if (chartData.startDate && chartData.endDate) {
 
@@ -71,7 +69,12 @@
                     .then(function (payload) {
                         vm.lineData = payload.data;
                     }, function (err) {
-                        logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return order data');
+                        console.log(err);
+                        if(err.status === 500){
+                            logger.warning('Too many calls have been made recently, The amount of calls are rate limited. Please wait 20 seconds and attempt to call again');
+                        } else {
+                            logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return order data');
+                        }
                     });
             }
         }
@@ -85,7 +88,11 @@
                     .then(function(payload) {
                         vm.barData = payload.data;
                     }, function(err) {
-                        logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return reason data');
+                        if(err.status === 500){
+                            logger.warning('Too many calls have been made recently, The amount of calls are rate limited. Please wait 20 seconds and attempt to call again');
+                        } else {
+                            logger.error(err.statusText + ' ' + err.status + ' occurred retrieving return order data');
+                        }
                     });
             }
         }
