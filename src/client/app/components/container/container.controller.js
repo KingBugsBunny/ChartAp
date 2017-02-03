@@ -18,14 +18,15 @@
             controller: ContainerController,
             controllerAs: 'vm',
             bindToController: true,
+
             //transcludes the html for the charts and forms
             transclude: true
         };
     }
 
-    ContainerController.$inject = ['$scope','logger', 'ReturnService'];
+    ContainerController.$inject = ['$scope','logger', 'ReturnServiceMock', 'ReturnReasonServiceMock'];
 
-    function ContainerController($scope, logger, ReturnService) {
+    function ContainerController($scope, logger, ReturnServiceMock, ReturnReasonServiceMock) {
         var vm = this;
 
         vm.init = init;
@@ -65,7 +66,7 @@
             if (chartData.startDate && chartData.endDate) {
 
                 //make service call
-                ReturnService.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category, chartData.groupby)
+                ReturnServiceMock.loadReturnCount(chartData.startDate, chartData.endDate, chartData.category, chartData.groupby)
                     .then(function (payload) {
                         vm.lineData = payload.data;
                     }, function (err) {
@@ -84,7 +85,7 @@
             if (chartData.startDate && chartData.endDate) {
 
                 //make service call
-                ReturnService.loadReasonCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
+                ReturnReasonServiceMock.loadReasonCount(chartData.startDate, chartData.endDate, chartData.category, chartData.limit)
                     .then(function(payload) {
                         vm.barData = payload.data;
                     }, function(err) {
