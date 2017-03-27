@@ -1,7 +1,5 @@
 # ChartAp
 
-Hosted here:  <a href="http://still-journey-60085.herokuapp.com/">http://still-journey-60085.herokuapp.com/</a>
-
 This app is an Angular 1.5 app that consumes an external API provided by SupplyAi and then displays that data in D3.js charts. Angular-NVD3 is used to integrate into angular.
 
 <h2>To Install</h2>
